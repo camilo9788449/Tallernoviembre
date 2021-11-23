@@ -1,4 +1,4 @@
-package com.example.segundotaller;
+package com.example.tallernoviembre;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,23 +25,30 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void  registrar (View view){
-        final TextView textView = (TextView) findViewById(R.id.text);
+        final TextView textView = (TextView) findViewById(R.id.registrar);
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        EditText editText = (EditText) findViewById(R.id.txtnombre);
-        String message =editText.getText().toString();
+        EditText editText1 = (EditText) findViewById(R.id.txtname);
+        String name =editText1.getText().toString();
+
+        EditText editText2 = (EditText) findViewById(R.id.txtapellido);
+        String apellido =editText2.getText().toString();
 
 
-        String url = "https://co.000webhost.com/members/website/prueba5curjcml/Tallernoviembre/registrar.php"+message;
+
+
+
+
+        String url = "https://prueba5curjcml.000webhostapp.com/database/registro.php?nombre="+name+"&apellido="+apellido;
 
         // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        textView.setText("Response is: "+ response.substring(0,19));
+                        textView.setText("Response is: "+ response.substring(0,60));
                     }
                 }, new Response.ErrorListener() {
             @Override
